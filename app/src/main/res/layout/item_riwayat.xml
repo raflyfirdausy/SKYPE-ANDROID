@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivKTP"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:scaleType="center"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tvNamaOrang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_person_pin_black_24dp"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/rafli_firdausy_irawan"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvWaktu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_access_time_black_24dp"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/_2019_06_25_21_26_45"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvPendudukTamu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_wc_black_24dp"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/penduduk_tamu"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvAlamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_location_on_black_24dp"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/alamat"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:id="@+id/layoutBackground"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:background="@color/greenMuda">
+
+                    <TextView
+                        android:id="@+id/tvStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="@string/masuk"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

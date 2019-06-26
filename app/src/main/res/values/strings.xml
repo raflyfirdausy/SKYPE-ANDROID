@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Skype - Sistem Keamanan Perumahan</string>
+    <string name="skype">SKYPE</string>
+    <string name="deskripsi_app">Sistem Keamanan Perumahan Menggunakan Arduino Mega 2560 dan RFID</string>
+    <string name="rafli_firdausy_irawan">Rafli Firdausy Irawan</string>
+    <string name="_2019_06_25_21_26_45">2019-06-25 21:26:45</string>
+    <string name="penduduk_tamu">Penduduk / Tamu</string>
+    <string name="alamat">Alamat</string>
+    <string name="masuk">Masuk</string>
 </resources>
