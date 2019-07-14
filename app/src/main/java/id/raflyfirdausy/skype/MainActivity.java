@@ -2,9 +2,17 @@ package id.raflyfirdausy.skype;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,18 +39,51 @@ public class MainActivity extends AppCompatActivity
     private Context context = MainActivity.this;
     private List<RiwayatModel> list = new ArrayList<>();
     private SwipeRefreshLayout swipeRefreshLayout;
+    private LinearLayout layoutEmpty;
+    private ImageView skype;
+    private AlertDialog.Builder dialog;
+    private LayoutInflater inflater;
+    private View dialogView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rvRiwayat = findViewById(R.id.rvRiwayat);
+        skype = findViewById(R.id.skype);
+
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+        layoutEmpty = findViewById(R.id.layoutEmpty);
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
                 android.R.color.holo_green_dark,
                 android.R.color.holo_orange_dark,
                 android.R.color.holo_blue_dark);
+
+        skype.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("InflateParams")
+            @Override
+            public void onClick(View view) {
+                dialog = new AlertDialog.Builder(MainActivity.this);
+                inflater = getLayoutInflater();
+                dialogView = inflater.inflate(R.layout.layout_ip, null);
+                dialog.setView(dialogView);
+                dialog.setCancelable(true);
+                dialog.setTitle("Setting Server");
+
+                @SuppressLint("CutPasteId") final EditText alamatServer = dialogView.findViewById(R.id.alamatServer);
+                @SuppressLint("CutPasteId") Button btnOk = dialogView.findViewById(R.id.btnOk);
+                alamatServer.setText(Config.HOST);
+                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Config.HOST = alamatServer.getText().toString();
+                        dialogInterface.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
     }
 
     @Override
@@ -75,6 +116,13 @@ public class MainActivity extends AppCompatActivity
                                 riwayatModel.setKtp(jsonObject.getString("ktp"));
                                 list.add(riwayatModel);
                             }
+//                            if(list.size() > 0){
+//                                layoutEmpty.setVisibility(View.GONE);
+//                                rvRiwayat.setVisibility(View.VISIBLE);
+//                            } else {
+//                                layoutEmpty.setVisibility(View.VISIBLE);
+//                                rvRiwayat.setVisibility(View.GONE);
+//                            }
                             RiwayatAdapter riwayatAdapter = new RiwayatAdapter(context, list);
                             @SuppressLint("WrongConstant")
                             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context,
@@ -93,9 +141,17 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
+                        swipeRefreshLayout.setRefreshing(false);
                     }
                 });
         requestQueue.add(stringRequest);
+//        if(list.size() > 0){
+//            layoutEmpty.setVisibility(View.VISIBLE);
+//            rvRiwayat.setVisibility(View.GONE);
+//        } else {
+//            layoutEmpty.setVisibility(View.GONE);
+//            rvRiwayat.setVisibility(View.VISIBLE);
+//        }
     }
 
     @Override

@@ -1,6 +1,6 @@
 package id.raflyfirdausy.skype;
 
-public class RiwayatModel {
+public class    RiwayatModel {
     private String id_riwayat, id_data, masuk_keluar, waktu, penduduk_tamu, nama, alamat, ktp;
 
     public RiwayatModel() {

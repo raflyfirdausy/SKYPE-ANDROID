@@ -7,4 +7,6 @@
     <string name="penduduk_tamu">Penduduk / Tamu</string>
     <string name="alamat">Alamat</string>
     <string name="masuk">Masuk</string>
+    <string name="oops_belum_ada_riwayat">Oops, belum ada riwayat</string>
+    <string name="_192_168_137_1">192.168.137.1</string>
 </resources>
