@@ -8,6 +8,28 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:id="@+id/layoutEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_s" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/oops_belum_ada_riwayat"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="170dp"
@@ -21,23 +43,22 @@
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
             android:layout_marginTop="15dp"
-            android:src="@drawable/ic_logo2"/>
+            android:src="@drawable/ic_logo2" />
 
         <!--<TextView-->
-            <!--android:id="@+id/skypes"-->
-            <!--android:visibility="visible"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentTop="true"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--android:layout_marginTop="15dp"-->
-            <!--android:padding="8dp"-->
-            <!---->
-            <!--android:text="@string/skype"-->
-            <!--android:textColor="@color/white"-->
-            <!--android:textSize="30sp"-->
-            <!--android:textStyle="bold" />-->
-
+        <!--android:id="@+id/skypes"-->
+        <!--android:visibility="visible"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:padding="8dp"-->
+        <!---->
+        <!--android:text="@string/skype"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="30sp"-->
+        <!--android:textStyle="bold" />-->
 
 
         <TextView
@@ -66,27 +87,6 @@
             app:mwhWaveHeight="27dp"
             app:mwhWaves="MultiWave" />
     </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutEmpty"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone">
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/ic_s"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/oops_belum_ada_riwayat"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
-    </LinearLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"

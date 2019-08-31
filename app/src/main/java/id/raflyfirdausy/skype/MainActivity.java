@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -84,6 +85,49 @@ public class MainActivity extends AppCompatActivity
                 dialog.show();
             }
         });
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                RequestQueue requestQueue;
+                requestQueue = Volley.newRequestQueue(context);
+                StringRequest stringRequest = new StringRequest(Request.Method.GET,
+                        Config.HOST + "/sKYPE-PKM/read_riwayat.php",
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONArray jsonArray = new JSONArray(response);
+                                    Config.jumlah_data_terbaru = jsonArray.length();
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+                requestQueue.add(stringRequest);
+
+//                Toast.makeText(MainActivity.this,
+//                        "jumlah_data_sekarang : " + Config.jumlah_data_sekarang +
+//                        "\njumlah_data_terbaru : " + Config.jumlah_data_terbaru,
+//                        Toast.LENGTH_LONG)
+//                        .show();
+
+                handler.postDelayed(this, 1000);
+                if (Config.jumlah_data_sekarang < Config.jumlah_data_terbaru) {
+                    getRiwayat();
+                }
+
+            }
+        }, 1000);
+
+
     }
 
     @Override
@@ -103,6 +147,7 @@ public class MainActivity extends AppCompatActivity
                         list.clear();
                         try {
                             JSONArray jsonArray = new JSONArray(response);
+                            Config.jumlah_data_sekarang = jsonArray.length();
                             for (int a = 0; a < jsonArray.length(); a++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(a);
                                 RiwayatModel riwayatModel = new RiwayatModel();
